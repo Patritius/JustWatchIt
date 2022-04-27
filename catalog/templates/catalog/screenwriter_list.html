@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Screenwriters List</h1>
+  {% if screenwriter_list %}
+  <ul>
+    {% for screenwriter in screenwriter_list %}
+      <li>
+        <a href="{{ screenwriter.get_absolute_url }}">{{ screenwriter.last_name }} {{ screenwriter.first_name }}</a>
+        ({{screenwriter.date_of_birth}} - {{screenwriter.date_of_death}}) {% if perms.catalog.can_mark_returned %}-
+        <a href="{% url 'screenwriter-update' screenwriter.id %}">Edit</a> -
+        <a href="{% url 'screenwriter-delete' screenwriter.id %}">Delete</a>  {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no screenwriters in the base.</p>
+  {% endif %}
+  {% if perms.catalog.can_mark_returned %}<center><a href="{% url 'screenwriter-create' %}">
+    <input type="submit" value="Add screenwriter"></a></center>  {% endif %}
+
+{% endblock %}

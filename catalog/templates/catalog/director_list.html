@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Directors List</h1>
+  {% if director_list %}
+  <ul>
+    {% for director in director_list %}
+      <li>
+        <a href="{{ director.get_absolute_url }}">{{ director.last_name }} {{ director.first_name }}</a>
+        ({{ director.date_of_birth }} - {{ director.date_of_death }}){% if perms.catalog.can_mark_returned %} -
+        <a href="{% url 'director-update' director.id %}">Edit</a> -
+        <a href="{% url 'director-delete' director.id %}">Delete</a>  {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no directors in the base.</p>
+  {% endif %}
+  {% if perms.catalog.can_mark_returned %}<center><a href="{% url 'director-create' %}">
+    <input type="submit" value="Add director"></a></center>  {% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{ movie.title }}</h1>
+
+  <p><strong>Screenwriter:</strong> <a href="{{ movie.screenwriter.get_absolute_url }}">{{ movie.screenwriter }}</a></p>
+  <p><strong>Director:</strong> <a href=" {{ movie.director.get_absolute_url }}">{{ movie.director }}</a></p>
+  <p><strong>Summary:</strong> {{ movie.summary }}</p>
+  <p><strong>Year of production:</strong> {{ movie.year_of_production }}</p>
+  <p><strong>Genre:</strong> {{ movie.genre.all|join:", " }}</p>
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h2>Copies</h2>
+
+    {% for copy in movie.movieinstance_set.all %}
+      <hr>
+      <p class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
+        {{ copy.get_status_display }}
+      </p>
+      {% if copy.status != 'a' %}
+        <p><strong>Due to be returned:</strong> {{ copy.due_back }}</p>
+      {% endif %}
+      <p><strong>Production:</strong> {{ copy.production }}</p>
+      <p class="text-muted"><strong>Id:</strong> {{ copy.id }}</p>
+    {% endfor %}
+  </div>
+{% endblock %}

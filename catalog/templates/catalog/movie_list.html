@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Movies List</h1>
+  {% if movie_list %}
+  <ul>
+    {% for movie in movie_list %}
+      <li>
+        <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a> ({{movie.screenwriter}}), ({{movie.director}})
+        {% if perms.catalog.can_mark_returned %} -
+        <a href="{% url 'movie-update' movie.id %}">Edit</a> -
+        <a href="{% url 'movie-delete' movie.id %}">Delete</a>  {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no movies in the movie rental.</p>
+  {% endif %}
+  {% if perms.catalog.can_mark_returned %}<center><a href="{% url 'movie-create' %}">
+    <input type="submit" value="Add movie"></a></center>  {% endif %}
+{% endblock %}

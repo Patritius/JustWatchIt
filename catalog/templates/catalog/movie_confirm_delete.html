@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Delete Movie</h1>
+
+<center><p>Are you sure you want to delete the movie: {{ movie }}?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Yes"> <a href = "{% url 'movies' %}"><input type = "button" value="No"></a>
+</form></center>
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Screenwriter: {{ screenwriter.first_name }} {{ screenwriter.last_name }}</h1>
+
+  <p><strong>Date of birth:</strong> {{ screenwriter.date_of_birth }} </p>
+  <p><strong>Date of death:</strong> {{ screenwriter.date_of_death }} </p>
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h2>Movies</h2>
+
+    {% for movie in screenwriter.movie_set.all %}
+      <hr>
+      <p><strong><a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a></strong>
+      <p> {{ movie.summary }}</p>
+    {% endfor %}
+  </div>
+
+
+{% endblock %}

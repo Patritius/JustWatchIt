@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Just Watch It</h1>
+  <p>Welcome to movie rental - Just Watch It, a website developed by <em>Patrycjusz Kozłowski</em>!</p>
+  <h2>Dynamic content</h2>
+  <p>The movie rental has the following record counts:</p>
+  <ul>
+    <li><strong>Movies:</strong> {{ num_movies }}</li>
+    <li><strong>Copies:</strong> {{ num_instances }}</li>
+    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+    <li><strong>Screenwriters:</strong> {{ num_screenwriters }}</li>
+    <li><strong>Directors:</strong> {{ num_directors }}</li>
+    <li><strong>Genres:</strong> {{ num_genres }}</li>
+  </ul>
+
+  <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+{% endblock %}
