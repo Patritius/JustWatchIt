@@ -21,7 +21,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'qf%ws7f4hp%0*c2synx5a###3x@iz#
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['just-watch-it.herokuapp.com','127.0.0.1']
 
 SESSION_SAVE_EVERY_REQUEST = True
 
