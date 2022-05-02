@@ -15,7 +15,6 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECRET_KEY = 'qf%ws7f4hp%0*c2synx5a###3x@iz#zgnwkzz1suu91ig%vs2$'
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'qf%ws7f4hp%0*c2synx5a###3x@iz#zgnwkzz1suu91ig%vs2$')
 
 # DEBUG = True
@@ -109,7 +108,6 @@ LOGIN_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
