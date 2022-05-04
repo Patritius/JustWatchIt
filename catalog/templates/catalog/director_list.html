@@ -6,7 +6,7 @@
   <ul>
     {% for director in director_list %}
       <li>
-        <a href="{{ director.get_absolute_url }}">{{ director.last_name }} {{ director.first_name }}</a>
+        <a href="{{ director.get_absolute_url }}"><b>{{ director.last_name }} {{ director.first_name }}</b></a>
         ({{ director.date_of_birth }} - {{ director.date_of_death }}){% if perms.catalog.can_mark_returned %} -
         <a href="{% url 'director-update' director.id %}">Edit</a> -
         <a href="{% url 'director-delete' director.id %}">Delete</a>  {% endif %}

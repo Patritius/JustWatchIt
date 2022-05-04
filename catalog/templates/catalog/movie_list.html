@@ -6,7 +6,7 @@
   <ul>
     {% for movie in movie_list %}
       <li>
-        <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a> ({{movie.screenwriter}}), ({{movie.director}})
+        <a href="{{ movie.get_absolute_url }}"><b>{{ movie.title }}</b></a> ({{movie.screenwriter}}), ({{movie.director}})
         {% if perms.catalog.can_mark_returned %} -
         <a href="{% url 'movie-update' movie.id %}">Edit</a> -
         <a href="{% url 'movie-delete' movie.id %}">Delete</a>  {% endif %}

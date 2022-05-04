@@ -6,7 +6,7 @@
   <ul>
     {% for screenwriter in screenwriter_list %}
       <li>
-        <a href="{{ screenwriter.get_absolute_url }}">{{ screenwriter.last_name }} {{ screenwriter.first_name }}</a>
+        <a href="{{ screenwriter.get_absolute_url }}"><b>{{ screenwriter.last_name }} {{ screenwriter.first_name }}</b></a>
         ({{screenwriter.date_of_birth}} - {{screenwriter.date_of_death}}) {% if perms.catalog.can_mark_returned %}-
         <a href="{% url 'screenwriter-update' screenwriter.id %}">Edit</a> -
         <a href="{% url 'screenwriter-delete' screenwriter.id %}">Delete</a>  {% endif %}
